@@ -13,7 +13,7 @@ class JovenesController extends Controller
     public function index()
     {
         $jovenes = jovenes::all();
-        return view('jovenes/index', compact('jovenes'));
+        return view('jovenes.index', compact('jovenes'));
     }
 
     /**
@@ -29,7 +29,32 @@ class JovenesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required',
+            'apellidos' => 'required',
+            'fecha_nacimiento' => 'nullable',
+            'direccion' => 'nullable',
+            'ultima_asistencia' => 'nullable',
+            'telefono' => 'required'
+        ]);
+
+        $joven = new jovenes();
+        $joven->nombre = $request->nombre;
+        $joven->apellidos = $request->apellidos;
+        $joven->fecha_nacimiento = $request->fecha_nacimiento;
+        $joven->direccion = $request->direccion;
+        $joven->ultima_asistencia = $request->ultima_asistencia;
+        $joven->genero = $request->has('genero') ? 'Mujer' : 'Hombre';
+        $joven->telefono = $request->telefono;
+
+        if ($request->hasFile('foto')) {
+            $path = $request->file('foto')->store('fotos', 'public');
+            $joven->foto = $path;
+        }
+
+        $joven->save();
+
+        return redirect()->route('jovenes.index')->with('success', 'Joven insertado correctamente');
     }
 
     /**

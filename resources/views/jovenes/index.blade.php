@@ -44,10 +44,10 @@
         <div class="col">
             <a style="text-decoration: none;" href="">
                 <div class="card h-100">
-                    <img src="{{asset('img/descarga.jpg')}}" class="card-img-top" alt="Foto de {{ $joven->nombre }} {{ $joven->apellido }}">
+                    <img src="{{ $joven->foto ? asset('storage/' . $joven->foto) : asset('img/usuario.png') }}" class="card-img-top" alt="Foto de {{ $joven->nombre }} {{ $joven->apellido }}">
                     <div class="card-body">
                         <h5 class="card-title l">{{$joven->nombre}} {{$joven->apellidos}}</h5>
-                        <h6 class="card-text" data-label="Edad"><strong>Edad:</strong> 21 años</h6>
+                        <h6 class="card-text" data-label="Edad"><strong>Edad:</strong> {{$joven->edad}} años</h6>
                         <h6 class="card-text" data-label="Teléfono"><strong>Teléfono:</strong> {{$joven->telefono}}</h6>
                     </div>
                 </div>

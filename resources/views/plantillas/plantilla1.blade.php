@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a class="{{ request()->is('eventos') ? 'active' : '' }}" href="/eventos">
+                    <a class="{{ request()->is('eventos') || request()->is('eventos/create') ? 'active' : '' }}" href="/eventos">
                         <ion-icon name="calendar-outline"></ion-icon>
                         <span>Eventos</span>
                     </a>
@@ -105,27 +105,26 @@
                 <form action="{{ route('jovenes.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="modal-body">
+                        <div class="d-flex flex-column align-items-center">
+                            <img id="img" src="{{asset('img/usuario.png') }}" alt="Imagen de usuario" class="rounded-circle" width="225" height="225">
+                            <div class="mt-2">
+                                <label for="foto" class="btn btn-primary">Cambiar foto</label>
+                                <input type="file" name="foto" id="foto" accept="image/*" class="file-input d-none">
+                            </div>
+                        </div>
 
-                        <div class="row mb-4">
-                            <div class="col-auto">
-                                <div class="d-flex flex-column align-items-center">
-                                    <img id="img" src="{{asset('img/usuario.png') }}" alt="Imagen de usuario" class="rounded-circle" width="225" height="225">
-                                    <div class="mt-2">
-                                        <label for="foto" class="btn btn-primary">Cambiar foto</label>
-                                        <input type="file" name="foto" id="foto" accept="image/*" class="file-input d-none">
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="row mt-3">
                             <div class="col">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInputNombre" placeholder="Jose" required>
-                                    <label for="floatingInputNombre">Nombre:</label>
+                                    <input type="text" class="form-control" id="nombre" name="nombre"  placeholder="Jose" required>
+                                    <label for="nombre">Nombre:</label>
                                 </div>
                             </div>
+
                             <div class="col">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="floatingInputApellido" placeholder="Perez Rodriguez" required>
-                                    <label for="floatingInputApellido">Apellidos:</label>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Perez Rodriguez" required>
+                                    <label for="apellidos">Apellidos:</label>
                                 </div>
                             </div>
                         </div>
@@ -156,7 +155,7 @@
                                 <div class="d-flex align-items-center">
                                     <span class="me-2">Hombre</span>
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                                        <input class="form-check-input" type="checkbox" role="switch" id="genero" name="genero">
                                     </div>
                                     <span class="ms-2">Mujer</span>
                                 </div>
