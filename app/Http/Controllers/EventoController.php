@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\detalle_evento;
 use App\Models\evento;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
+use function PHPSTORM_META\map;
 
 class EventoController extends Controller
 {
@@ -12,7 +16,9 @@ class EventoController extends Controller
      */
     public function index()
     {
-        $eventos = evento::all();
+        // Obtener los eventos junto con sus detalles (Eager Loading)
+        $eventos = evento::with('detalles')->get();
+        // Retornar la vista con los eventos
         return view('eventos.index', compact('eventos'));
     }
 
@@ -21,15 +27,44 @@ class EventoController extends Controller
      */
     public function create()
     {
-        return view('eventos.create');
+        $jovenes = DB::table('jovenes')->select('id_joven', 'nombre', 'apellidos')->get();
+        return view('eventos.create', compact('jovenes'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'tipo_evento' => 'nullable',
+            'fecha' => 'nullable',
+            'hora' => 'nullable',
+            'lugar' => 'nullable',
+            'direccion' => 'nullable',
+            'dinamicas' => 'nullable',
+            'mensajes' => 'nullable',
+            'alabanza' => 'nullable',
+            'producto' => 'nullable',
+            'precio_producto' => 'nullable'
+        ]);
+
+        $evento = evento::create([
+            'tipo_evento' => $request->tipo_evento,
+            'fecha' => $request->fecha,
+            'hora' => $request->hora,
+        ]);
+
+        // Insertar en detalle_eventos
+        DB::table('detalle_eventos')->insert([
+            'id_evento' => $evento->id, // El ID del evento recién creado
+            'lugar' => $request->lugar ?? null, // Valores opcionales como NULL si no están definidos
+            'direccion' => $request->direccion ?? null,
+            'dinamicas' => $request->dinamicas ?? null,
+            'mensaje' => $request->mensajes ?? null,
+            'alabanza' => $request->alabanza ?? null,
+            'producto' => $request->producto ?? null,
+            'precio_producto' => $request->precio_producto ?? null,
+        ]);
+
+        return redirect()->route('eventos.index');
     }
 
     /**

@@ -33,9 +33,9 @@ class JovenesController extends Controller
             'nombre' => 'required',
             'apellidos' => 'required',
             'fecha_nacimiento' => 'nullable',
-            'direccion' => 'nullable',
+            'direccion' => 'required',
             'ultima_asistencia' => 'nullable',
-            'telefono' => 'required'
+            'telefono' => 'nullable'
         ]);
 
         $joven = new jovenes();
@@ -54,7 +54,7 @@ class JovenesController extends Controller
 
         $joven->save();
 
-        return redirect()->route('jovenes.index')->with('success', 'Joven insertado correctamente');
+        return redirect()->route('jovenes.index');
     }
 
     /**

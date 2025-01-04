@@ -5,7 +5,6 @@
 <style>
     .boton {
         width: auto;
-        /* Cambia de 100% a auto para ajustar al contenido */
         height: 45px;
         margin-bottom: 20px;
         display: flex;
@@ -16,7 +15,6 @@
         background-color: var(--color-boton);
         color: var(--color-boton-texto);
         padding: 0 15px;
-        /* Añade padding para un mejor ajuste */
     }
 
     .boton ion-icon {
@@ -27,7 +25,6 @@
     .d-flex {
         display: flex;
         justify-content: flex-end;
-        /* Alinea el botón a la derecha */
     }
 </style>
 
@@ -38,6 +35,29 @@
             <span>Agregar Liga</span>
         </button>
     </a>
+</div>
+
+<div class="accordion" id="accordionExample">
+    @foreach($eventos as $index => $evento)
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="heading{{ $index }}">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ $index }}" aria-expanded="false" aria-controls="collapse{{ $index }}">
+                Liga en {{ $evento->detalles->lugar ?? 'No definido' }}, tipo de liga: {{ $evento->tipo_evento }}
+            </button>
+        </h2>
+        <div id="collapse{{ $index }}" class="accordion-collapse collapse" aria-labelledby="heading{{ $index }}" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+                <strong>Fecha:</strong> {{ \Carbon\Carbon::parse($evento->fecha)->translatedFormat('d F Y') }} <br>
+                <strong>Día:</strong> {{ \Carbon\Carbon::parse($evento->fecha)->translatedFormat('l') }} <br>
+                <strong>Hora:</strong> {{ \Carbon\Carbon::parse($evento->hora)->format('h:i A') }} <br>
+                <strong>Lugar:</strong> {{ $evento->detalles->lugar ?? 'No definido' }} <br>
+                <strong>Dirección:</strong> {{ $evento->detalles->direccionJoven->nombre ?? 'No definida' }} <br>
+                <strong>Dinámicas:</strong> {{ $evento->detalles->dinamicasJoven->nombre ?? 'No definidas' }} <br>
+                <strong>Mensaje:</strong> {{ $evento->detalles->mensajeJoven->nombre ?? 'No definido' }}
+            </div>
+        </div>
+    </div>
+    @endforeach
 </div>
 
 
