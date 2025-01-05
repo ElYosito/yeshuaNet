@@ -144,7 +144,7 @@
                             </div>
                             <div class="col">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa su dirección" required>
+                                    <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Ingresa su dirección">
                                     <label for="direccion">Dirección</label>
                                 </div>
                             </div>
