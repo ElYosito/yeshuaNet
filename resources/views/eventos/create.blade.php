@@ -153,8 +153,8 @@
     <div id="formVisita" class="evento-form">
         <h5>Formulario para Visita</h5>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="visitaLugar" name="visita_lugar" placeholder="Lugar de la visita">
-            <label for="visitaLugar">Lugar de la visita</label>
+            <input type="text" class="form-control" id="lugarVisita" name="lugarVisita" placeholder="Lugar de la visita">
+            <label for="lugarVisita">Lugar de la visita</label>
         </div>
         <!-- Agregar más campos si es necesario -->
     </div>
@@ -173,8 +173,8 @@
     <div id="formConcentracion" class="evento-form">
         <h5>Formulario para Concentración</h5>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar de la concentración">
-            <label for="concentracionLugar">Lugar de la concentración</label>
+            <input type="text" class="form-control" id="lugarConcentra" name="lugarConcentra" placeholder="Lugar de la concentración">
+            <label for="lugarConcentra">Lugar de la concentración</label>
         </div>
         <!-- Agregar más campos si es necesario -->
     </div>

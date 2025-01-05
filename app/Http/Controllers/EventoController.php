@@ -44,6 +44,8 @@ class EventoController extends Controller
             'fecha' => 'nullable',
             'hora' => 'nullable',
             'lugar' => 'nullable',
+            'lugarVisita' => 'nullable',
+            'lugarConcentra' => 'nullable',
             'direccion' => 'nullable',
             'dinamicas' => 'nullable',
             'mensajes' => 'nullable',
@@ -62,6 +64,8 @@ class EventoController extends Controller
         DB::table('detalle_eventos')->insert([
             'id_evento' => $evento->id, // El ID del evento recién creado
             'lugar' => $request->lugar ?? null, // Valores opcionales como NULL si no están definidos
+            'lugarVisita' => $request->lugarVisita ?? null,
+            'lugarConcentra' => $request->lugarConcentra ?? null,
             'direccion' => $request->direccion ?? null,
             'dinamicas' => $request->dinamicas ?? null,
             'mensaje' => $request->mensaje ?? null,

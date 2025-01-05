@@ -52,9 +52,10 @@
                 <strong>Día:</strong> {{ \Carbon\Carbon::parse($evento->fecha)->translatedFormat('l') }} <br>
                 <strong>Hora:</strong> {{ \Carbon\Carbon::parse($evento->hora)->format('h:i A') }} <br>
                 <strong>Lugar:</strong> {{ $evento->detalles->lugar ?? 'No definido' }} <br>
-                <strong>Dirección:</strong> {{ $evento->detalles->direccionJoven->nombre ?? 'No definida' }} <br>
+                <strong>Dirección:</strong> {{ $evento->detalles->direccionJoven->nombre ?? 'Todos' }} <br>
                 <strong>Dinámicas:</strong> {{ $evento->detalles->dinamicasJoven->nombre ?? 'No definidas' }} <br>
-                <strong>Mensaje:</strong> {{ $evento->detalles->mensajeJoven->nombre ?? 'Herman@ de la iglesia' }}
+                <strong>Mensaje:</strong> {{ $evento->detalles->mensajeJoven->nombre ?? 'Herman@ de la iglesia' }} <br>
+                <strong>Alabanza:</strong> {{ $evento->detalles->mensajeJoven->alabanza ?? 'Luz y fuego' }}
             </div>
         </div>
     </div>
@@ -97,7 +98,7 @@
                 <strong>Fecha:</strong> {{ \Carbon\Carbon::parse($evento->fecha)->translatedFormat('d F Y') }} <br>
                 <strong>Día:</strong> {{ \Carbon\Carbon::parse($evento->fecha)->translatedFormat('l') }} <br>
                 <strong>Hora:</strong> {{ \Carbon\Carbon::parse($evento->hora)->format('h:i A') }} <br>
-                <strong>Lugar:</strong> {{ $evento->detalles->lugar ?? 'No definido' }} <br>
+                <strong>Lugar:</strong> {{ $evento->detalles->lugarConcentra ?? 'No definido' }} <br>
             </div>
         </div>
     </div>

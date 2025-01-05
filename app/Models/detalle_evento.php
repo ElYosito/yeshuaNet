@@ -13,6 +13,8 @@ class detalle_evento extends Model
     protected $fillable = [
         'id_evento',
         'lugar',
+        'lugarVisita',
+        'lugarConcentra',
         'direccion',
         'dinamicas',
         'mensaje',
