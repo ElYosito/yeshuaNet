@@ -123,7 +123,7 @@
 
                             <div class="col">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Perez Rodriguez" required>
+                                    <input type="text" class="form-control" id="apellidos" name="apellidos" placeholder="Perez Rodriguez">
                                     <label for="apellidos">Apellidos:</label>
                                 </div>
                             </div>
@@ -132,7 +132,7 @@
                         <div class="row mb-4">
                             <div class="col">
                                 <div class="form-floating">
-                                    <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" placeholder="Ingresa su fecha de nacimiento" onchange="calcularEdad()" required>
+                                    <input type="date" name="fecha_nacimiento" class="form-control" id="fecha_nacimiento" placeholder="Ingresa su fecha de nacimiento" onchange="calcularEdad()">
                                     <label for="fecha_nacimiento">Fecha de nacimiento</label>
                                 </div>
                             </div>

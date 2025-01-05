@@ -31,9 +31,9 @@ class JovenesController extends Controller
     {
         $request->validate([
             'nombre' => 'required',
-            'apellidos' => 'required',
+            'apellidos' => 'nullable',
             'fecha_nacimiento' => 'nullable',
-            'direccion' => 'required',
+            'direccion' => 'nullable',
             'ultima_asistencia' => 'nullable',
             'telefono' => 'nullable'
         ]);

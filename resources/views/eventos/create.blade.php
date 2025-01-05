@@ -109,6 +109,7 @@
                 <div class="col-4">
                     <select class="form-select" aria-label="Default select example" id="direccion" name="direccion">
                         <option selected value="">Direccion</option>
+                        <option value="0">Todos</option>
                         @foreach ($jovenes as $joven)
                         <option value="{{ $joven->id_joven }}">{{ $joven->nombre }} {{ $joven->apellidos }}</option>
                         @endforeach
@@ -128,6 +129,7 @@
                 <div class="col-6">
                     <select class="form-select" aria-label="Default select example" id="mensaje" name="mensaje">
                         <option selected value="">Mensaje</option>
+                        <option value="0">Herman@ de la iglesia</option>
                         @foreach ($jovenes as $joven)
                         <option value="{{ $joven->id_joven }}">{{ $joven->nombre }} {{ $joven->apellidos }}</option>
                         @endforeach
@@ -171,12 +173,8 @@
     <div id="formConcentracion" class="evento-form">
         <h5>Formulario para Concentración</h5>
         <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="concentracionLugar" name="concentracion_lugar" placeholder="Lugar de la concentración">
+            <input type="text" class="form-control" id="lugar" name="lugar" placeholder="Lugar de la concentración">
             <label for="concentracionLugar">Lugar de la concentración</label>
-        </div>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="concentracionTema" name="concentracion_tema" placeholder="Tema de la concentración">
-            <label for="concentracionTema">Tema de la concentración</label>
         </div>
         <!-- Agregar más campos si es necesario -->
     </div>

@@ -16,10 +16,16 @@ class EventoController extends Controller
      */
     public function index()
     {
-        // Obtener los eventos junto con sus detalles (Eager Loading)
-        $eventos = evento::with('detalles')->get();
-        // Retornar la vista con los eventos
-        return view('eventos.index', compact('eventos'));
+        // Obtener los eventos de tipo "Liga normal"
+        $eventosLigaNormal = evento::with('detalles')->where('tipo_evento', 'Liga normal')->get();
+
+        // Obtener los eventos de tipo "ventas"
+        $eventosVentas = evento::with('detalles')->where('tipo_evento', 'venta')->get();
+
+        $eventosConcentra = evento::with('detalles')->where('tipo_evento', 'Concentracion')->get();
+
+        // Retornar la vista con ambos conjuntos de eventos
+        return view('eventos.index', compact('eventosLigaNormal', 'eventosVentas', 'eventosConcentra'));
     }
 
     /**
@@ -58,7 +64,7 @@ class EventoController extends Controller
             'lugar' => $request->lugar ?? null, // Valores opcionales como NULL si no están definidos
             'direccion' => $request->direccion ?? null,
             'dinamicas' => $request->dinamicas ?? null,
-            'mensaje' => $request->mensajes ?? null,
+            'mensaje' => $request->mensaje ?? null,
             'alabanza' => $request->alabanza ?? null,
             'producto' => $request->producto ?? null,
             'precio_producto' => $request->precio_producto ?? null,
